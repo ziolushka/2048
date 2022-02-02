@@ -7,7 +7,7 @@
 #include <QObject>
 #include <QLayoutItem>
 
-#include "game2048.h"
+#include "GameManager.h"
 #include "secondwindow.h"
 
 QT_BEGIN_NAMESPACE
@@ -35,8 +35,5 @@ private:
     Ui::MainWindow *ui;
     Game2048 *game;
     SecondWindow *endWindow;
-    QPushButton *cell;
-    QHBoxLayout *layout;
-    QLabel *cell_value;
 };
 #endif // MAINWINDOW_H

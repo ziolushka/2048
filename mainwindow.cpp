@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-enum direction {right,down,left,up};
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -37,24 +35,29 @@ void MainWindow::applyStyles(){
 
     setWindowIcon(QIcon(":/new/images/icon.png"));
 }
+
 void MainWindow::displayGameBoard()
 {
     ui->score->setText(QString::number(game->score_));
     ui->best_score->setText(QString::number(game->bestScore_));
 
-    for (int i = 0; i < 4; ++i)
-        for (int j = 0; j < 4; ++j)
+    for (int i = 0; i < boardSize; ++i)
+        for (int j = 0; j < boardSize; ++j)
             if (!game->board[i][j])
                 setBoardItem(i, j, " ");
             else
                 setBoardItem(i, j, QString::number(game->board[i][j]));
 }
+
 void MainWindow::setBoardItem(int i, int j, QString value)
 {
+    if(ui->boardUI->cellWidget(i,j)) {
+        ui->boardUI->removeCellWidget(i,j);
+    }
     QColor color = getItemColor(value.toInt());
-    cell = new QPushButton();
-    layout = new QHBoxLayout();
-    cell_value = new QLabel(value);
+    QPushButton * cell = new QPushButton();
+    QHBoxLayout * layout = new QHBoxLayout();
+    QLabel * cell_value = new QLabel(value);
     cell_value->setAlignment(Qt::AlignCenter);
 
     layout->addWidget(cell_value);
@@ -65,11 +68,11 @@ void MainWindow::setBoardItem(int i, int j, QString value)
                         "margin: 6px;"
                         "color: #776e65;"
                         "font-weight: bold;"
-                        "font-family: \"Clear Sans\", \"Helvetica Neue\", Arial, sans-serif;"
                         "font-size: 36px;");
 
     ui->boardUI->setCellWidget(i, j, cell);
 }
+
 QColor MainWindow::getItemColor(int itemValue)
 {
     if (2 == itemValue)
@@ -89,24 +92,31 @@ QColor MainWindow::getItemColor(int itemValue)
     else
         return QColor(238, 228, 218, 35);
 }
+
 void MainWindow::on_pushButton_clicked()
 {
    game->newGame();
    displayGameBoard();
 }
+
 void MainWindow::keyPressEvent(QKeyEvent * event){
-
-    if(event->key() == Qt::Key_Up)
-        game->applyMove(up);
-    if(event->key() == Qt::Key_Left)
-        game->applyMove(left);
-    if(event->key() == Qt::Key_Down)
-        game->applyMove(down);
-    if(event->key() == Qt::Key_Right)
-        game->applyMove(right);
-
+     switch (event->key()){
+     case Qt::Key_Up:
+         game->moveNumberCell(up);
+         break;
+     case Qt::Key_Left:
+         game->moveNumberCell(left);
+         break;
+     case Qt::Key_Down:
+         game->moveNumberCell(down);
+         break;
+     case Qt::Key_Right:
+         game->moveNumberCell(right);
+         break;
+     }
     displayGameBoard();
 }
+
 MainWindow::~MainWindow()
 {
     delete ui;

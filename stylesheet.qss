@@ -3,7 +3,6 @@ QMenuBar::item{
     border: none;
 }
 QLabel#name, #game_over{
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
     font-size: 60px;
     font-weight: bold;
     text-align: center;
@@ -14,7 +13,6 @@ QTableWidget {
      padding: 0 ;
      background: #bbada0;
      color: white;
-     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
      font-size: 25px ;
      font-weight: bold;
      border-radius: 6px;
@@ -22,7 +20,6 @@ QTableWidget {
 QLabel#instruction, #link_name{
      line-height: 42px;
      color: #776e65;
-     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
      font-size: 18px;
 }
 QPushButton{
@@ -34,13 +31,11 @@ QPushButton{
      text-align: center;
      float: right;
      font-weight: bold;
-     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
      font-size: 18px;
 }
 QLabel#score_name, #best_score_name{
      padding: 0px 25px;
      font-size: 13px;
-     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
      font-weight: bold;
      border-radius: 3px;
      border-bottom-right-radius: 0;
@@ -53,7 +48,6 @@ QLabel#score_name, #best_score_name{
 QLabel#score, #best_score{
      padding: 0px 20px;
      font-size: 25px;
-     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
      font-weight: bold;
      border-radius: 3px;
      border-top-left-radius: 0;

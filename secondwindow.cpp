@@ -17,7 +17,10 @@ SecondWindow::SecondWindow(QWidget *parent) :
     setFixedSize(500, 700);
 
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, QColor(238, 228, 218, 150));
+    //Windows
+    //pal.setColor(QPalette::Background, QColor(238, 228, 218, 150));
+    //macOS
+    pal.setColor(QPalette::Window, QColor(238, 228, 218, 150));
     end_window->setAutoFillBackground(true);
     end_window->setPalette(pal);
 

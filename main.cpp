@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "game2048.h"
+#include "GameManager.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
